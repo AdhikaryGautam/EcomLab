@@ -4,8 +4,117 @@
   box-sizing: border-box;
 }
 body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  margin: 0px;
+  font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
 }
+.overlay-form {
+  position: absolute;
+  top: 50vh;
+  left: 0px;
+  width: 100vw;
+  height: 0vh;
+  background-color: #273469;
+  z-index: -1;
+  opacity: 0;
+  padding: 80px 100px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: top 500ms ease-in-out, opacity 500ms ease-in-out,
+    height 0ms ease-in-out 500ms;
+  display: flex;
+  justify-content: center;
+}
+.overlay-form form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.overlay-form .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.overlay-form h1 {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.overlay-form p {
+  font-size: 16px;
+  color: #eee;
+  margin: -15px 0px 30px;
+}
+.overlay-form .form-element {
+  margin: 20px 0px;
+}
+.overlay-form label {
+  display: block;
+  font-size: 17px;
+  color: #eee;
+  margin-bottom: 5px;
+}
+.overlay-form input {
+  width: 100%;
+  padding: 6px;
+  font-size: 17px;
+  box-shadow: none;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+/* .overlay-form button,
+.center button {
+  margin-top: 10px;
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+  text-transform: uppercase;
+  background: #fff;
+  color: #222;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+} */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999999;
+}
+.center button {
+  width: 150px;
+  height: 40px;
+  font-weight: 600;
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+body.activeForm .overlay-form {
+  z-index: 999999;
+  opacity: 1;
+  top: 0px;
+  height: 100vh;
+  transition: top 500ms ease-in-out, opacity 500ms ease-in-out,
+    height 0ms ease-in-out 0ms;
+  overflow: hidden;
+}
+
+body.activeForm .toggle-btn {
+  display: none;
+}
+
 button {
   cursor: pointer;
   padding: 10px 18px;
@@ -24,6 +133,11 @@ button {
 button:hover {
   background-color: #fafaff;
   border: 1.5px solid #273469;
+  color: #273469;
+}
+.overlay-form button,
+.toggle-btn {
+  background: #fff;
   color: #273469;
 }
 
@@ -230,7 +344,7 @@ button:hover {
   width: 250px;
   height: 90px;
   display: flex;
-  align-items: center;
+  align-items: end;
   position: relative;
   flex-direction: column;
   justify-content: space-between;
@@ -260,7 +374,7 @@ button:hover {
 }
 .search-bar {
   position: absolute;
-  right: 0;
+  right: 85px;
   top: 80%;
   transform: translateY(-50%);
   background-color: #fff;
